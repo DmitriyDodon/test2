@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Project extends Migration
+class Countries extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class Project extends Migration
      */
     public function up()
     {
-        Schema::create('projects' , function (Blueprint $table){
+        Schema::create('countries', function (Blueprint $table){
             $table->id();
-            $table->string('name');
-            $table->timestamps();
+            $table->char('code' , 2)->unique();
+            $table->string('name')->unique();
+            $table->bigInteger('continent_id')->unsigned();
         });
 
     }
@@ -28,6 +29,6 @@ class Project extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('countries');
     }
 }

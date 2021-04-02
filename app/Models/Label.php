@@ -9,8 +9,19 @@ class Label extends Model
 {
     use HasFactory;
 
-    public function users()
+    public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
+
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class);
+    }
+
+
+
+
+
+
 }
